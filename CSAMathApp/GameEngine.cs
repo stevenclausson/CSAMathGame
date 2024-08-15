@@ -10,47 +10,59 @@ namespace CSAMathApp
 {
     public class GameEngine
     {
-        Stopwatch stopWatch = new Stopwatch();
-        public static void Play()
+        public static void StartGame() 
         {
-
-            Console.WriteLine("Timer STopped!");
-            //Thread.Sleep(10000);
+            InitializeGame();
+        }
+        
+        static void InitializeGame()
+        {
+            Console.WriteLine("Hello, welcome to the Math Game!");
+            Console.WriteLine("Last updated 2024-8-13");
+            System.Console.WriteLine("Press ENTER to continue...");
+            Console.ReadLine();
+            ChooseGame();
 
         }
 
-        public static void BeginGame(int gameMode)
+        static void ChooseGame()
         {
-            Stopwatch stopWatch = new Stopwatch();
-            Console.WriteLine("COUNTDOWN BEGIN!");
-            stopWatch.Start();
-            if (gameMode == 1)
+            Console.WriteLine("Please select which operation you would like to play.");
+            Console.WriteLine($@"
+            A - Addition
+            S - Subtraction
+            M - Multiplication
+            D - Division ");
+            string userChoice = Console.ReadLine().ToLower();
+            Console.WriteLine("Select difficulty");
+            Console.WriteLine($@"
+            E - Easy
+            M - Medium
+            H - Hard ");
+            string userDifficulty = Console.ReadLine().ToLower();
+            Console.WriteLine("Now, how many questions would you like to answer?");
+            int numberOfQuestions = Int32.Parse(Console.ReadLine());
+            if (userChoice == "a")
             {
-                GameLogic.AdditionGame(0,10);
-                stopWatch.Stop();
+                GameLogic.AdditionGame(userDifficulty, numberOfQuestions);
             }
-            else if (gameMode == 2)
+            else if (userChoice == "s")
             {
-                stopWatch.Stop();
+                GameLogic.SubtractionGame(userDifficulty, numberOfQuestions);
+            }
+            else if (userChoice == "m")
+            {
+                GameLogic.MultiplicationGame(userDifficulty, numberOfQuestions);
+            }
+            else if (userChoice == "d")
+            {
+                GameLogic.DivisionGame(userDifficulty, numberOfQuestions);
             }
             else
             {
-                Console.WriteLine("WRIONG TEST");
+                Console.WriteLine("Please try again.");
+                ChooseGame();
             }
-
-            TimeSpan ts = stopWatch.Elapsed;
-            string elapsedTime = String.Format("{0:00}:{1:00}:{2:00}:{3:00}",
-            ts.Hours, ts.Minutes, ts.Seconds,
-            ts.Milliseconds / 10);
-            Console.WriteLine($"Runtime: {elapsedTime}");
-            Console.ReadLine();
-        }
-
-        public static void RandomNumberGen(int min, int max)
-        {
-            var rand = new Random();
-            var output1 = rand.Next(min, max);
-            var output2 = rand.Next(min, max);
         }
     }
 }
