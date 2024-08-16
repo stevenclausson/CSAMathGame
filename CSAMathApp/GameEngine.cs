@@ -34,35 +34,30 @@ namespace CSAMathApp
             M - Multiplication
             D - Division ");
             string userChoice = Console.ReadLine().ToLower();
-            Console.WriteLine("Select difficulty");
-            Console.WriteLine($@"
-            E - Easy
-            M - Medium
-            H - Hard ");
-            string userDifficulty = Console.ReadLine().ToLower();
-            Console.WriteLine("Now, how many questions would you like to answer?");
-            int numberOfQuestions = Int32.Parse(Console.ReadLine());
-            if (userChoice == "a")
-            {
-                GameLogic.AdditionGame(userDifficulty, numberOfQuestions);
-            }
-            else if (userChoice == "s")
-            {
-                GameLogic.SubtractionGame(userDifficulty, numberOfQuestions);
-            }
-            else if (userChoice == "m")
-            {
-                GameLogic.MultiplicationGame(userDifficulty, numberOfQuestions);
-            }
-            else if (userChoice == "d")
-            {
-                GameLogic.DivisionGame(userDifficulty, numberOfQuestions);
-            }
-            else
-            {
-                Console.WriteLine("Please try again.");
-                ChooseGame();
-            }
+            GameLogic.TestGame(userChoice);
+
+            //if (userChoice == "a")
+            //{
+            //    //GameLogic.AdditionGame(userDifficulty, numberOfQuestions);
+            //    GameLogic.TestGame(userChoice, numberOfQuestions);
+            //}
+            //else if (userChoice == "s")
+            //{
+            //    GameLogic.SubtractionGame(userDifficulty, numberOfQuestions);
+            //}
+            //else if (userChoice == "m")
+            //{
+            //    GameLogic.MultiplicationGame(userDifficulty, numberOfQuestions);
+            //}
+            //else if (userChoice == "d")
+            //{
+            //    GameLogic.DivisionGame(userDifficulty, numberOfQuestions);
+            //}
+            //else
+            //{
+            //    Console.WriteLine("Please try again.");
+            //    ChooseGame();
+            //}
         }
     }
 }

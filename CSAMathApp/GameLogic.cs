@@ -561,7 +561,129 @@ namespace CSAMathApp
                 Console.WriteLine($"Runtime: {elapsedTime}");
                 Console.ReadLine();
                 Console.WriteLine($"Total correct: {totalCorrect}");
+
             }
+
+        }
+
+        //-------------THE FOLLOWING IS A TEST-------------------------------------
+
+        public static void TestGame(string choice)
+        {
+
+            if (choice == "a")
+            {
+                TestDifficultyCheck("a");
+            }
+            else
+            {
+                Console.WriteLine("Another choice.");
+            }
+            ////Create and start stopwatch
+            //Stopwatch sw = new Stopwatch();
+            //sw.Start();
+
+            ////variable for total correct answers
+            //int totalCorrect = 0;
+
+
+            ////Begin question loop
+            //for (int i = 0; i < questions; i++)
+            //{
+            //    if (choice == "a")
+            //    {
+            //        Console.WriteLine("Add Me");
+            //    }
+            //    else if (choice == "s")
+            //    {
+
+            //    }
+
+            //    else
+            //        Console.WriteLine("Fail");
+            //}
+            // //stops stopwatch
+            // sw.Stop();
+            //// Calculates Stopwatch elapsed time
+            //TimeSpan ts = sw.Elapsed;
+            //string elapsedTime = String.Format("{0:00}:{1:00}:{2:00}:{3:00}",
+            //ts.Hours, ts.Minutes, ts.Seconds,
+            //ts.Milliseconds / 10);
+            //Console.WriteLine($"Runtime: {elapsedTime}");
+            //Console.ReadLine();
+            //Console.WriteLine($"Total correct: {totalCorrect}");
+
+        }
+
+        public static void TestRandom(int rand1, int rand2, string game)
+        {
+            //Random number gen
+            Random rnd = new Random();
+            int num1 = rnd.Next(rand1, rand2);
+            int num2 = rnd.Next(rand1, rand2);
+            TestNumberOfQuestions(num1, num2, game);
+        }
+
+        public static void TestDifficultyCheck(string game)
+        {
+            Console.WriteLine("Select difficulty");
+            Console.WriteLine($@"
+            E - Easy
+            M - Medium
+            H - Hard ");
+            string userDifficulty = Console.ReadLine().ToLower();
+            if (userDifficulty == "e")
+            {
+                TestRandom(1, 10, game);
+            }
+            else if (userDifficulty == "m")
+            {
+                TestRandom(10, 100, game);
+            }
+            else if ( userDifficulty == "h")
+            {
+                TestRandom(100, 1000, game);
+            }
+        }
+
+        public static void TestMath(int rand1, int rand2, string game, int questions)
+        {
+            if (game == "a")
+            {
+                Console.WriteLine($"{rand1} + {rand2}");
+                int answer = rand1 + rand2;
+                bool success = int.TryParse(Console.ReadLine(), out int result);
+                if (success)
+                {
+                    if (result == answer)
+                    {
+                        Console.WriteLine("Correct");
+                        TestScoreKeeper(1);
+                    }
+                }
+                else
+                {
+                    Console.WriteLine("Not an answer.");
+                }
+            }
+        }
+        public static void TestScoreKeeper(int correct)
+        {
+            int score = 0;
+            score += correct;
+            Console.WriteLine($"Score: {score}");
+        }
+
+        public static void TestNumberOfQuestions(int num1, int num2, string game)
+        {
+            Console.WriteLine("Now, how many questions would you like to answer?");
+            int numberOfQuestions = Int32.Parse(Console.ReadLine());
+            TestMath(num1, num2, game, numberOfQuestions);
+
+        }
+
+        public static void TestAdditionGame()
+        {
 
         }
     }
