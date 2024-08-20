@@ -34,7 +34,26 @@ namespace CSAMathApp
             M - Multiplication
             D - Division ");
             string userChoice = Console.ReadLine().ToLower();
-            GameLogic.TestGame(userChoice);
+            Console.WriteLine("Select difficulty");
+            Console.WriteLine($@"
+            E - Easy
+            M - Medium
+            H - Hard ");
+            string userDifficulty = Console.ReadLine().ToLower();
+            Console.WriteLine("Now, how many questions would you like to answer?");
+            int numberOfQuestions = Int32.Parse(Console.ReadLine());
+            if (userDifficulty == "e")
+            {
+                GameLogic.TestGame(userChoice, 1, numberOfQuestions);
+            }
+            else if(userDifficulty == "m") 
+            {
+                GameLogic.TestGame(userChoice, 10, numberOfQuestions);
+            }
+            else if (userDifficulty == "h") 
+            {
+                GameLogic.TestGame(userChoice, 100, numberOfQuestions);
+            }
 
             //if (userChoice == "a")
             //{
