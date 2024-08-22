@@ -32,7 +32,8 @@ namespace CSAMathApp
             A - Addition
             S - Subtraction
             M - Multiplication
-            D - Division ");
+            D - Division 
+            X - Exit");
             string userChoice = Console.ReadLine().ToLower();
             Console.WriteLine("Select difficulty");
             Console.WriteLine($@"
@@ -54,29 +55,6 @@ namespace CSAMathApp
             {
                 GameLogic.TestGame(userChoice, 100, numberOfQuestions);
             }
-
-            //if (userChoice == "a")
-            //{
-            //    //GameLogic.AdditionGame(userDifficulty, numberOfQuestions);
-            //    GameLogic.TestGame(userChoice, numberOfQuestions);
-            //}
-            //else if (userChoice == "s")
-            //{
-            //    GameLogic.SubtractionGame(userDifficulty, numberOfQuestions);
-            //}
-            //else if (userChoice == "m")
-            //{
-            //    GameLogic.MultiplicationGame(userDifficulty, numberOfQuestions);
-            //}
-            //else if (userChoice == "d")
-            //{
-            //    GameLogic.DivisionGame(userDifficulty, numberOfQuestions);
-            //}
-            //else
-            //{
-            //    Console.WriteLine("Please try again.");
-            //    ChooseGame();
-            //}
         }
     }
 }

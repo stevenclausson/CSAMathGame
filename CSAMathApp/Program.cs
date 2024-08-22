@@ -3,8 +3,12 @@ using System.Diagnostics;
 using System.IO.Pipes;
 
 
-GameEngine.StartGame();
+//GameEngine.StartGame();
+Console.WriteLine("Welcome to MathGame!");
 
+var callGame = new MathGame();
+Console.WriteLine($"Thanks for playing {callGame}!");
+Console.ReadLine();
 
 
 //Random game with random operations
